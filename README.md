@@ -10,3 +10,9 @@ My solutions to the exercises found in the classic book "The C Programming Langu
 * Chapter 6 - Structures
 * Chapter 7 - Input and Output
 * Chapter 8 - The UNIX System Interface
+
+###Compilers Used
+Source code were compiled and tested using:
+* GCC
+* Clang 3.8
+* CL (Visual Studio C++ 2015 Build Tools)

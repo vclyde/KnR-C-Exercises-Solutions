@@ -21,30 +21,38 @@ int main() {
 	int c, i = 0, blank= 0;
 	int status = OUT;
 
+	printf("\n===============\n");
+	printf("Input: \n");
+	printf("===============\n");
+
 	while ((c = getchar()) != EOF) {
 		/* If c is not new line then store to array of char*/
 		if (c != '\n') {
-			status = IN;
 			string[i++] = c;
 
 			/* Count the number of trailing blanks*/
 			if (c == ' ' || c == '\t')
 				blank++;
-			else
+			else {
 				blank = 0;
-		} else if (c == '\n' && status == IN) {
-			status = OUT;
+				status = IN;
+			}
+		} else {
 			i -= blank;
-			string[i++] = '\n';
 			blank = 0;
+			if (status == IN) {
+				status = OUT;
+				string[i++] = '\n';
+			}
 		}
 	}
 
 	string[i] = '\0';
 
-	printf("\nOutput: \n");
+	printf("\n===============\n");
+	printf("Output: \n");
+	printf("===============\n");
 	printf("%s", string);
 
 	return 0;
 }
-

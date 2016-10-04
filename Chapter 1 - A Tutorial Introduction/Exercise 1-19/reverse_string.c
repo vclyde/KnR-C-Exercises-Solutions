@@ -11,6 +11,7 @@
  * a program that reverses its input a line at a time.
  */
 #include <stdio.h>
+
 #define MAXLINE 1000
 
 /* Function prototypes */
@@ -22,9 +23,8 @@ int main() {
 	char string[MAXLINE];
 	int line_length;
 
-	while ((line_length = getline(string, MAXLINE)) > 0) {
+	while ((line_length = getline(string, MAXLINE)) > 0)
 		reverse(string);
-	}
 
 	return 0;
 }

@@ -24,9 +24,8 @@ int main() {
 	int c, length, ctr = 0;
 	char string[1000];
 
-	while ((length = getline(string, MAX)) > 0) {
+	while ((length = getline(string, MAX)) > 0)
 		fold(string, length);
-	}
 
 	return 0;
 }
@@ -53,8 +52,9 @@ void fold(char string[], int size) {
 	int i = 0, ctr = 0;
 
 	if (size <= COLUMN)
-		printf("%s", string);
+		printf("%s\n", string);
 	else {
+		printf("\n");
 		for (i = 0; i < size; i++) {
 			if (i != 0 && (i % (COLUMN - 1)) == 0) {
 				if (string[i] != ' ' && string[i] != '\t' && string[i] != '.' && string[i - 1] != ' ') {
@@ -65,5 +65,6 @@ void fold(char string[], int size) {
 			}
 			putchar(string[i]);
 		}
+		printf("\n");
 	}
 }

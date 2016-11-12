@@ -111,7 +111,7 @@ void remove_comments(char ccode[]) {
 		i++;
 	}
 	ccode[i] = '\0';
-	// Maybe I'm missing you
+	
 	/* Use to verify the number of comments that exist */
 	printf("\nNumber of comment(s): %d\n", comment_ctr);
 }

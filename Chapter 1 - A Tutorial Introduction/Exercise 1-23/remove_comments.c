@@ -45,11 +45,9 @@ int main() {
 
 /* Remove comments from a c program */
 void remove_comments(char ccode[]) {
-	int i = 1, j = 0, k = 0; 
-	int prev_ch, status = OUT, comment_ctr = 0, temp = i;
+	int i = 1, j = 0, k = 0, i_temp = i; 
+	int prev_ch = ccode[i - 1], status = OUT, comment_ctr = 0, comment_closing = 0;
 	char code[LIMIT];
-
-	prev_ch = ccode[i - 1];
 	
 	while (prev_ch != '\0') {
 		
@@ -62,12 +60,14 @@ void remove_comments(char ccode[]) {
 			comment_ctr++;
 		} else if ((prev_ch == '*' && ccode[i] == '/') && status == MULTI_COMMENT) {
 			status = OUT;
+			comment_closing = 2;
 		} else if (prev_ch == '\n' && status == SINGLE_COMMENT) {
 			status = OUT;
+			comment_closing = 1;
 		}
 
 		/* Handles chars and strings */
-		if (status == OUT && prev_ch == '\''){
+		if (status == OUT && prev_ch == '\'') {
 			status = SINGLE_QUOTE;
 		} else if (status == OUT && prev_ch == '"') {
 			status = DOUBLE_QUOTE;
@@ -81,24 +81,27 @@ void remove_comments(char ccode[]) {
 			}
 		} else if (status == DOUBLE_QUOTE) {
 			if (prev_ch == '\\') {
-				if (ccode[i] == '"' || ccode[i] == '\\'){
+				if (ccode[i] == '"' || ccode[i] == '\\') {
 					i++;
 				}
-			} else if (prev_ch == '"'){
+			} else if (prev_ch == '"') {
 				status = OUT;
 			}
 		}
 
-		/* Write to new array without the comments*/
-		if (status != MULTI_COMMENT && status != SINGLE_COMMENT)
+		/* Write to new array without the comments */
+		if (status != MULTI_COMMENT && status != SINGLE_COMMENT && comment_closing <= 0) 
 			code[j++] = prev_ch;
 
-		if (temp != i)
+		if (comment_closing > 0)
+			comment_closing--;
+
+		if (i_temp != i)
 			code[j++] = ccode[i - 1];
 		
 		prev_ch = ccode[i];
 		i++;
-		temp = i;
+		i_temp = i;
 	}
 
 	/* Copy back to ccode */
@@ -108,7 +111,7 @@ void remove_comments(char ccode[]) {
 		i++;
 	}
 	ccode[i] = '\0';
-	
-	/* To verify the number of comments that exists */	
+	// Maybe I'm missing you
+	/* Use to verify the number of comments that exist */
 	printf("\nNumber of comment(s): %d\n", comment_ctr);
 }

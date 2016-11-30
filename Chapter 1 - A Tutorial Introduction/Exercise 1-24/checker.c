@@ -1,5 +1,5 @@
 /*
- * Filename: remove_comments.c
+ * Filename: checker.c
  * Date:  November 6, 2016
  * Author: Clyde M. Velasquez
  *

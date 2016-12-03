@@ -75,10 +75,10 @@ int main() {
 	printf("Maximum signed long: %ld\n\n", signed_max(sizeof(long)));
 
 	printf("Minimum float: %f\n", 0.0f);
-	printf("Maximum float: %f\n\n", pow(2, 128)); 
+	printf("Maximum float: %f\n\n", pow(2, 128)); // Estimates only
 
 	printf("Minimum double: %f\n", 0.0f);
-	printf("Maximum double: %f\n\n", pow(2, 1023.9999999999)); 
+	printf("Maximum double: %f\n\n", pow(2, 1023.9999999999)); // Estimates only
 
 	return 0;
 }

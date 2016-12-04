@@ -55,36 +55,38 @@ int main() {
 	printf("Ranges of different C variables by direct computation: \n");
 	printf("======================================\n");
 	printf("Minimum unsigned char: 0\n");
-	printf("Maximum unsigned char: %d\n\n", unsigned_max(sizeof(char)));
-	printf("Minimum signed char: %d\n", signed_min(sizeof(char)));
-	printf("Maximum signed char: %d\n\n", signed_max(sizeof(char)));
+	printf("Maximum unsigned char: %ld\n\n", unsigned_max(sizeof(char)));
+	printf("Minimum signed char: %ld\n", signed_min(sizeof(char)));
+	printf("Maximum signed char: %ld\n\n", signed_max(sizeof(char)));
 
 	printf("Minimum unsigned short: 0\n");
-	printf("Maximum unsigned short: %d\n", unsigned_max(sizeof(short)));
-	printf("Minimum signed short: %d\n", signed_min(sizeof(short)));
-	printf("Maximum signed short: %d\n\n", signed_max(sizeof(short)));
+	printf("Maximum unsigned short: %ld\n", unsigned_max(sizeof(short)));
+	printf("Minimum signed short: %ld\n", signed_min(sizeof(short)));
+	printf("Maximum signed short: %ld\n\n", signed_max(sizeof(short)));
 
 	printf("Minimum unsigned int: 0\n");
-	printf("Maximum unsigned int: %u\n", unsigned_max(sizeof(int)));
-	printf("Minimum signed int: %d\n", signed_min(sizeof(int)));
-	printf("Maximum signed int: %d\n\n", signed_max(sizeof(int)));
+	printf("Maximum unsigned int: %lu\n", unsigned_max(sizeof(int)));
+	printf("Minimum signed int: %ld\n", signed_min(sizeof(int)));
+	printf("Maximum signed int: %ld\n\n", signed_max(sizeof(int)));
 
+	// Depends on computer architecture
+	// This will not work on 64 bit PCs
 	printf("Minimum unsigned long: 0\n");
 	printf("Maximum unsigned long: %lu\n", unsigned_max(sizeof(long)));
 	printf("Minimum signed long: %ld\n", signed_min(sizeof(long)));
 	printf("Maximum signed long: %ld\n\n", signed_max(sizeof(long)));
 
 	printf("Minimum float: %f\n", 0.0f);
-	printf("Maximum float: %f\n\n", pow(2, 128)); // Estimates only
+	printf("Maximum float: %Lf\n\n", powl(2, 128)); // Estimates only
 
 	printf("Minimum double: %f\n", 0.0f);
-	printf("Maximum double: %f\n\n", pow(2, 1023.9999999999)); // Estimates only
+	printf("Maximum double: %Lf\n\n", powl(2, 1024)); // Estimates only
 
 	return 0;
 }
 
 unsigned long unsigned_max(short bytes) {
-	return pow(2, bytes * 8) - 1;
+	return powl(2, bytes * 8) - 1;
 }
 
 signed long signed_max(short bytes) {

@@ -12,12 +12,10 @@
  * 0 through 9, a through f, and A through F.
  */
 #include <stdio.h>
-#include <math.h>
 
 #define HEX_BASE 16
 #define LIMIT 10
 
-/* Function prototype */
 int htoi(char hex_string[]);
 
 int main() {
@@ -34,37 +32,30 @@ int main() {
 }
 
 int htoi(char hex_string[]) {
-    int length, i = 0, start = 0, result = 0;
+    int start = 0, result = 0;
     char hex;
 
-    /* Count the length of the string */
-    while (hex_string[i] != '\0')
-        i++;
-    
-    if (i > 0) {
-        /* Ignore 0x or 0X */
-        if (hex_string[0] == '0' && (hex_string[1] == 'x' || hex_string[1] == 'X')) 
-            start = 2; 
+    /* Ignore 0x or 0X */
+    if (hex_string[0] == '0' && (hex_string[1] == 'x' || hex_string[1] == 'X')) 
+        start = 2; 
 
-        length = (i - start);
+    while ((hex = hex_string[start]) != '\0' ) {
+        result *= HEX_BASE;
 
-        while (start < i) {
-            hex = hex_string[start];
-
-            if (hex >= '0' && hex <= '9')
-                result += ((hex - '0') * pow(HEX_BASE, --length));
-            else if (hex >= 'a' && hex <= 'f')
-                result += (((hex - 'a') + 10) * pow(HEX_BASE, --length));
-            else if (hex >= 'A' && hex <= 'F')
-                result += (((hex - 'A') + 10) * pow(HEX_BASE, --length));
-            else {
-                printf("Invalid character -> %c\n", hex);
-                return -1;
-            }
-
-            start++;
+        if (hex >= '0' && hex <= '9')
+            result += (hex - '0');
+        else if (hex >= 'a' && hex <= 'f')
+            result += ((hex - 'a') + 10);
+        else if (hex >= 'A' && hex <= 'F')
+            result += ((hex - 'A') + 10);
+        else {
+            printf("Invalid character -> %c\n", hex);
+            return -1;
         }
+
+        start++;
     }
+    
 
     return result;
 }

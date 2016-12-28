@@ -30,7 +30,6 @@ int main() {
 }
 
 int any(const char s1[], const char s2[]) {
-    int def = -1;
     int i, j, k;
 
     for (k = 0; s2[k] != '\0'; k++) {
@@ -40,5 +39,5 @@ int any(const char s1[], const char s2[]) {
         }
     }
 
-    return def;
+    return -1;
 }

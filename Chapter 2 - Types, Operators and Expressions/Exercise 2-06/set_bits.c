@@ -13,30 +13,15 @@
 #include <stdio.h>
 
 unsigned setbits(unsigned x, int p, int n, unsigned y);
-void display_binary(unsigned x);
 
 int main() {
-	unsigned x, y, result;
-	int p, n;
-
-	printf("Enter x: ");
-	scanf("%u", &x);
-	printf("Enter p: ");
-	scanf("%d", &p);
-	printf("Enter n: ");
-	scanf("%d", &n);
-	printf("Enter y: ");
-	scanf("%u", &y);
+	unsigned x = 90, y = 7;
+	int p = 6, n = 3;
 
 	printf("Before setting bits...\n");
-	printf("x = ");
-	display_binary(x);
-	printf("y = ", y);
-	display_binary(y);
+	printf("%u\n", x);
 	printf("After setting bits...\n");
-	result = setbits(x, p, n, y);
-	printf("%u = ", result);
-	display_binary(result);
+	printf("%u\n", setbits(x, p, n, y));
 
 	return 0;
 }
@@ -48,16 +33,4 @@ unsigned setbits(unsigned x, int p, int n, unsigned y) {
 	/* After masking, shift to p + 1 - n */
 	unsigned ybits = (y & ~(~0 << n)) << shift_pos; 
 	return (~xbits & x) | ybits;
-}
-
-/* Used to display the bits of a number for debugging purposes */
-void display_binary(unsigned x) {
-	register int t;
-	for (t = 2048; t > 0; t /= 2) {
-		if (x & t) 
-			printf("1 ");
-		else 
-			printf("0 ");
-	}
-	printf("\n");
 }

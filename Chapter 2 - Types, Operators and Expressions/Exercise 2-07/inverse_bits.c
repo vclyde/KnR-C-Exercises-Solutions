@@ -28,15 +28,13 @@ int main() {
 
 unsigned invert(unsigned x, int p, int n) {
 	int shift_pos = p + 1 - n;
-	int x_invert = ~x;
-
-	return ((((x_invert >> shift_pos) & ~(~0 << n)) << shift_pos) ^ x) ^ (((x >> shift_pos & ~(~0 << n)) << shift_pos));
+	return ((~(~0 << n)) << shift_pos) ^ x;
 }
 
 /* For debugging purposes */
 void display_binary(unsigned x) {
 	register int t;
-	for (t = 2048; t > 0; t /= 2) {
+	for (t = 1024; t > 0; t /= 2) {
 		if (x & t) 
 			printf("1 ");
 		else 

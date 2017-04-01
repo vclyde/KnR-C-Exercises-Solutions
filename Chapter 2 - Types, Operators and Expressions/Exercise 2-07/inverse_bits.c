@@ -18,10 +18,11 @@ void display_binary(unsigned x);
 
 int main() {
 	unsigned x = 90;
-	int p = 7, n = 8;
+	int p = 7, n = 3;
 
 	display_binary(x);
 	display_binary(invert(x, p, n));
+	printf("\n");
 	
 	return 0;
 }
@@ -34,7 +35,7 @@ unsigned invert(unsigned x, int p, int n) {
 /* For debugging purposes */
 void display_binary(unsigned x) {
 	register int t;
-	for (t = 1024; t > 0; t /= 2) {
+	for (t = 128; t > 0; t /= 2) {
 		if (x & t) 
 			printf("1 ");
 		else 

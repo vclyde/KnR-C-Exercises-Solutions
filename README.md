@@ -1,7 +1,7 @@
 # KnR-C-Exercises
 My solutions to the exercises found in the classic book "The C Programming Language" by Brian W. Kernighan and Dennis M. Ritchie
 
-###Contents
+### Contents
 * Chapter 1 - A Tutorial Introduction
 * Chapter 2 - Types, Operators and Expressions
 * Chapter 3 - Control Flow
@@ -11,7 +11,7 @@ My solutions to the exercises found in the classic book "The C Programming Langu
 * Chapter 7 - Input and Output
 * Chapter 8 - The UNIX System Interface
 
-###Compilers Used
+### Compilers Used
 Source code were compiled and tested on Linux(Ubuntu 16) and Windows 7 using:
 * GCC
 * Clang 3.8

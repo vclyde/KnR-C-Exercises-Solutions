@@ -30,7 +30,7 @@ unsigned setbits(unsigned x, int p, int n, unsigned y) {
 	int shift_pos = p + 1 - n;
 	/* Move back to its original position after shifting to the right */
 	unsigned xbits = (x >> shift_pos & ~(~0 << n)) << shift_pos; 
-	/* After masking, shift to p + 1 - n */
+	/* After masking, left shift to shift_pos */
 	unsigned ybits = (y & ~(~0 << n)) << shift_pos; 
 	return (~xbits & x) | ybits;
 }

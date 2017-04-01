@@ -12,9 +12,9 @@ My solutions to the exercises found in the classic book "The C Programming Langu
 * Chapter 8 - The UNIX System Interface
 
 ### Compilers Used
+
 Source code were compiled and tested on Linux(Ubuntu 16) and Windows 7 using:
+
 * GCC
 * Clang 3.8
 * CL (Visual Studio C++ 2015 Build Tools)
-
-If you found bug(s), kindly inform me :) via vclyde53 @ yahoo.com

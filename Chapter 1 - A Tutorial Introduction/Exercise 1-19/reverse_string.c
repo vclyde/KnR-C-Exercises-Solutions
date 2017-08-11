@@ -11,11 +11,11 @@
  * a program that reverses its input a line at a time.
  */
 #include <stdio.h>
-
+#include <string.h>
 #define MAXLINE 1000
 
 /* Function prototypes */
-int getline(char string[], int limit);
+int getline2(char string[], int limit);
 void reverse(char string[]);
 
 /* Main function */
@@ -23,14 +23,14 @@ int main() {
 	char string[MAXLINE];
 	int line_length;
 
-	while ((line_length = getline(string, MAXLINE)) > 0)
+	while ((line_length = getline2(string, MAXLINE)) > 0)
 		reverse(string);
 
 	return 0;
 }
 
 /* getline: read a line into string, return length */
-int getline(char string[], int limit) {
+int getline2(char string[], int limit) {
 	int c; /* Variable for character input */
 	int i; /* Loop increment */
 
@@ -49,13 +49,8 @@ int getline(char string[], int limit) {
 
 /* function that reverses a string */
 void reverse(char string[]) {
-	int i = 0;
-
-	/* Get the length of the string */
-	while (string[i] != '\0')
-		++i;
-
-	--i; /* Ignore newline */
+	int i = strlen(string) - 1; /* Ignore newline */
+	
 	/* Prints one character at a time */
 	while (i >= 0)
 		putchar(string[--i]);

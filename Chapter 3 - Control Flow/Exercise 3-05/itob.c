@@ -54,14 +54,10 @@ void itob(int n, char s[], int b) {
 	int i = 0, sign = n, rem;
 	do {
 		rem = abs(n) % b;
-		if (b == 16) {
-			if (rem < 10) 
-				s[i++] = rem + '0';
-			else if (rem >= 10 || rem < 16)
-				s[i++] = (rem - 10) + 'A';
-		} else {
+		if (rem > 9 && rem < 16)
+			s[i++] = (rem - 10) + 'A';
+		else 
 			s[i++] = rem + '0';	
-		}
 	} while ((n /= b) != 0);
 
 	if (sign < 0) 

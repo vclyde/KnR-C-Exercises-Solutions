@@ -12,28 +12,18 @@
  */
 #include <stdio.h>
 #include <string.h>
-#include <limits.h>
-#define SIZE 1000
+#define SIZE 100
 
 void itob(int n, char s[], int b);
 
 int main() {
 	int n = 1000;
-	char s[SIZE];
+	char s[SIZE] = "\0"; /* Default value */
+	
 	printf("Original: %d\n", n);
-
-	itob(n, s, 2);
-	printf("Binary: %s\n", s);
-
 	itob(n, s, 8);
-	printf("Octal: %s\n", s);
-
-	itob(n, s, 10);
-	printf("Decimal: %s\n", s);
-
-	itob(n, s, 16);
-	printf("Hexadecimal: %s\n", s);
-
+	printf("Result: %s\n", s);
+	
 	return 0;
 }
 
@@ -46,15 +36,16 @@ void reverse(char s[]) {
 
 void itob(int n, char s[], int b) {
 
-	if (b != 2 && b != 8 && b != 10 && b != 16) {
-		printf("Invalid base %d. Can only handle 2(binary), 8(octal), 10(decimal), 16(hexadecimal).\n", b);
+	int max_base = ('9' - '0') + ('Z' - 'A') + 2;
+	if (b > max_base || b < 0) {
+		printf("Invalid base %d!\n", b);
 		return;
 	}
 	
 	int i = 0, sign = n, rem;
 	do {
-		rem = abs(n) % b;
-		if (rem > 9 && rem < 16)
+		rem = abs(n % b);
+		if (rem > 9)
 			s[i++] = (rem - 10) + 'A';
 		else 
 			s[i++] = rem + '0';	

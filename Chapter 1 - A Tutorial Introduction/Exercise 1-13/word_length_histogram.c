@@ -44,7 +44,7 @@ int main() {
 	printf("\nHorizontal Histogram\n");
 	printf("==================================\n");
 	for (i = 1; i < SIZE; i++) {
-		printf("%d  ", i);
+		printf("%02d  ", i);
 		for (int j = 0; j < freq[i]; j++)
 			printf("* ");
 		printf("\n");
@@ -55,7 +55,7 @@ int main() {
 	printf("\nVertical Histogram\n");
 	printf("==================================\n");
 	for (i = max; i > 0; i--) {
-		printf("%d |", i);
+		printf("%02d |", i);
 		for (c = 1; c < SIZE; c++) {
 			space = max - freq[c];
 			if ((space - word_length) > 0)
@@ -67,13 +67,10 @@ int main() {
 		word_length++;
 		printf("\n");
 	}
-
+	/*Horizontal label*/
 	printf("   ============================================================\n   ");
 	for (i = 1; i < SIZE; i++)
-		if (i < 10)
-			printf("0%d ", i);
-		else
-			printf("%d ", i);
+		printf("%02d ", i);
 		
 	printf("\n");
 	return 0;
